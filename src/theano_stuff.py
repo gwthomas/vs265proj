@@ -62,7 +62,7 @@ class TheanoFunction(object):
         for itr in range(itrs):
             batchidx = np.random.permutation(n)[:batchsize]
             loss = self._update(Xtrain[batchidx], Ytrain[batchidx])
-            print 'Itr %i: loss =' % itr, loss
+            print('Itr %i: loss = %f' % (itr, loss))
             self.save_params(filename)
 
     def evaluate(self, Xtest, Ytest, predict):

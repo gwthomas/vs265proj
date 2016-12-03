@@ -27,4 +27,4 @@ if __name__ == '__main__':
 
     while True:
         net.train(Xtrain, Ytrain, itrs=100, batchsize=100)
-        print 'Accuracy:', net.evaluate(Xtest, Ytest, lambda y: np.argmax(y, axis=1))
+        print('Accuracy:', net.evaluate(Xtest, Ytest, lambda y: np.argmax(y, axis=1)))

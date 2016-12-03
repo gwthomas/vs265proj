@@ -1,10 +1,10 @@
-import cPickle
+import pickle
 import numpy as np
 import os
 
 def unpickle(file):
     fo = open(file, 'rb')
-    dict = cPickle.load(fo)
+    dict = pickle.load(fo, encoding='latin1')
     fo.close()
     return dict
 
