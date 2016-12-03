@@ -68,5 +68,4 @@ class TheanoFunction(object):
     def evaluate(self, Xtest, Ytest, predict):
         output = self._fn(Xtest)
         predictions = predict(output)
-        import pdb; pdb.set_trace()
         return np.mean(predictions == Ytest)

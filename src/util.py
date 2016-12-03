@@ -18,7 +18,7 @@ def load_cifar(dir, reshape=True):
         r = img[:1024].reshape(shape)
         g = img[1024:2048].reshape(shape)
         b = img[2048:].reshape(shape)
-        return np.stack([r,g,b])
+        return np.stack([r,g,b]) / 255.0
     if not reshape:
         reshape_image = lambda x: x
 
