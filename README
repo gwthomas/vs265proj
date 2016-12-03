@@ -1,1 +1,5 @@
 Please make commits small and specific so the code stays synced :)
+
+
+To run the CIFAR test:
+THEANO_FLAGS='device=cpu' python src/cifar_test.py
