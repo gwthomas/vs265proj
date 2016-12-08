@@ -56,6 +56,8 @@ if option == "data":
     #plt.imshow(cv2.cvtColor(output_magno, cv2.COLOR_BGR2RGB))
     #plt.imshow(output_magno, cmap='gray')
     #plt.show()
+
+    #out = []
     retina = cv2.bioinspired.createRetina((img_shape[0], img_shape[1]))
     data = Xtrain
     Xtrain_parvo = []
@@ -67,6 +69,7 @@ if option == "data":
         if i % 1000 == 0:
             print("progress %d" %i)
     util.write_npy('cifar-10-parvo-out', Xtrain_parvo, 'Xtrain')
+    #out.append(Xtrain_parvo)
     
     Xtest_parvo = []
     print("Outputting Xtest parvo files")
@@ -76,5 +79,6 @@ if option == "data":
         Xtest_parvo.append(retina.getParvo())
         if i % 1000 == 0:
             print("progress %d" %i)
-
+    #out.append(Xtest_parvo)
     util.write_npy('cifar-10-parvo-out', Xtest_parvo, 'Xtest')
+    
