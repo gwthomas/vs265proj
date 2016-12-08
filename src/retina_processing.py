@@ -1,14 +1,14 @@
 import os
 import cv2
+from cv2 import bioinspired
 import pickle
-import lasagne
 import numpy as np
+import theano
 import theano_stuff, util
 from visual_system import VisualSystem
 from simretina import retina, dataset
-from nose.tools import assert_equal, assert_not_equal
 
-option = "test-setup-function"#"test-bgr2rgb-sequence"
+option = "data"#"test-setup-function"#"test-bgr2rgb-sequence"
 if option == "test-bgr2rgb-sequence":
     frames, size = dataset.get_horse_riding()
 
@@ -27,3 +27,17 @@ if option == "test-setup-function":
     print(type(eye.setupOPLandIPLParvoChannel))
     print(type(eye.setupIPLMagnoChannel))
     print(eye.getInputSize())
+
+
+
+if option == "data":
+    frame, size = dataset.get_lenna()
+    retina = cv2.bioinspired.createRetina((size[0], size[1]))
+    retina.clearBuffers()
+    retina.run(frame)
+    lenna_output_parvo = retina.getParvo()
+    print(lenna_output_parvo.shape)
+    lenna_output_magno = retina.getMagno()
+    
+    Xtrain, Ytrain, Xtest, Ytest = util.load_cifar('cifar-10-batches-py', reshape=True)
+    

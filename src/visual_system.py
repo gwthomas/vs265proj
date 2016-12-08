@@ -34,7 +34,7 @@ class VisualSystem(TheanoFunction):
     def __init__(self, k, batchsize):
         self._input_var = T.fmatrix('input')
 
-        n_retina_out = 3*32*32 # @retina team: change this to the dimension of whatever your part outputs
+        n_retina_out = 32*32*3 # @retina team: change this to the dimension of whatever your part outputs
         n_lgn_out = 100
         n_v1_out = 100
         n_v2_out = 100
