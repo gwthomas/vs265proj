@@ -10,9 +10,7 @@ def cross_entropy_error(yhat, y):
     return T.mean(lasagne.objectives.categorical_crossentropy(yhat, y))
 
 class TheanoFunction(object):
-    # Override this. Init should set up member variables _input_var, _output_var,
-    # and _param_vars, then call super init
-    def __init__(self):
+    def compile(self):
         self._fn = theano.function(
             inputs=[self._input_var],
             outputs=self._output_var,
@@ -53,6 +51,9 @@ class TheanoFunction(object):
     def load_params(self, filename):
         with np.load(filename) as data:
             self.set_params([data['arr_'+str(i)] for i in range(len(data.files))])
+
+    def forward(self, input_var):
+        raise NotImplementedError
 
     def __call__(self, *args):
         return self._fn(*args)
