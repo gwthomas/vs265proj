@@ -13,9 +13,11 @@ if __name__ == '__main__':
     net = VisualSystem(k, batchsize)
     net.compile()
     net.opt_setup(theano_stuff.cross_entropy_error, lasagne.updates.adam)
-
+    i = 0
     while True:
         net.train(Xtrain, Ytrain, itrs=50, batchsize=batchsize)
         # For technical reasons we can only evaluate exactly batchsize samples at a time with this network
         batchidx = np.random.permutation(len(Xtest))[:batchsize]
         print('Accuracy:', net.evaluate(Xtest[batchidx], Ytest[batchidx], lambda y: np.argmax(y, axis=1)))
+        print(i)
+        i += 1

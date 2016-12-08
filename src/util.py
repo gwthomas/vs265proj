@@ -35,3 +35,8 @@ def load_cifar(dir, reshape=True):
     Ytest = np.array(test_dict['labels'])
 
     return Xtrain, Ytrain, Xtest, Ytest
+
+def write_npy(dir, data, name):
+    np.save(os.path.join(dir, name), data)
+
+
