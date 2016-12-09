@@ -32,13 +32,17 @@ if option == "test-setup-function":
 
 
 if option == "data":
-    """frame, size = dataset.get_lenna()
+    frame, size = dataset.get_lenna()
     retina = cv2.bioinspired.createRetina((size[0], size[1]))
     retina.clearBuffers()
     retina.run(frame)
     lenna_output_parvo = retina.getParvo()
-    lenna_output_magno = retina.getMagno()"""
-    
+    #lenna_output_magno = retina.getMagno()
+    plt.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    plt.show()
+    plt.imshow(cv2.cvtColor(lenna_output_parvo, cv2.COLOR_BGR2RGB))#lenna_output_parvo)
+    plt.show()
+    """
     Xtrain, Ytrain, Xtest, Ytest = util.load_cifar('cifar-10-batches-py', reshape=True)
     img_shape = Xtrain[0].shape
     retina = cv2.bioinspired.createRetina((img_shape[0], img_shape[1]))
@@ -81,4 +85,4 @@ if option == "data":
             print("progress %d" %i)
     #out.append(Xtest_parvo)
     util.write_npy('cifar-10-parvo-out', Xtest_parvo, 'Xtest')
-    
+    """
